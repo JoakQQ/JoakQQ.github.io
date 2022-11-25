@@ -1,0 +1,15 @@
+{
+  "about-me": "關於我",
+  "en": "英文",
+  "zh": "中文",
+  "language": "語言",
+  "home-page": "Joak的個人頁面",
+  "foot-page-declaimer": "此頁面由 Joak 使用 MUI 和 NextJS 創建",
+  "github-page": "Joak的Github",
+  "greeting": "你好!",
+  "my-name": "我係阿Joe",
+  "self-description": "我係個開發員",
+  "email-me": "發郵件給我",
+  "dark-mode": "夜間模式",
+  "light-mode": "日間模式"
+}

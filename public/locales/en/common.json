@@ -1,0 +1,15 @@
+{
+  "about-me": "About me",
+  "en": "English",
+  "zh": "Chinese",
+  "language": "Language",
+  "home-page": "Joak's Personal Page",
+  "foot-page-declaimer": "This page is created by Joak using MUI and NextJS",
+  "github-page": "Joak's Github",
+  "greeting": "Hello There!",
+  "my-name": "I'm Joe",
+  "self-description": "I'm a developer",
+  "email-me": "Email me",
+  "dark-mode": "Dark Mode",
+  "light-mode": "Light Mode"
+}
