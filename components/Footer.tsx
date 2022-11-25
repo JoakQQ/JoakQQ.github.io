@@ -56,6 +56,7 @@ export default function Footer() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'end',
+          textAlign: 'right',
         }}
       >
         <Link
