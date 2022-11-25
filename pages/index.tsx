@@ -50,24 +50,25 @@ const SelfDescriptionTypography = styled(Typography)(({ theme }) => ({
 }))
 
 const SelfDescriptionBox = styled(Box)(({ theme }) => ({
-  [theme.breakpoints.down('md')]: {
-    padding: '64px 16px',
-  },
-  [theme.breakpoints.up('md')]: {
-    padding: '64px',
-  },
   width: '100%',
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
+  [theme.breakpoints.down('md')]: {
+    padding: '64px 16px',
+    gap: 8,
+  },
+  [theme.breakpoints.up('md')]: {
+    padding: '64px',
+    gap: 16,
+  },
 }))
 
 const AboutMeButtonHolder = styled(Box)({
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
-  padding: 8,
 })
 
 export default function HomePage() {

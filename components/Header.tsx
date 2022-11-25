@@ -60,19 +60,21 @@ export default function Header(props: { toggleColorMode: () => void }) {
             backgroundColor: 'inherit',
           }}
         >
-          <IconButton
-            size="large"
-            edge="start"
-            sx={{
-              mr: 2,
-              color: 'white',
-              display: { sm: 'none' },
-              height: 'inherit',
-            }}
-            onClick={handleDrawerToggle}
-          >
-            <MenuIcon />
-          </IconButton>
+          <Box>
+            <IconButton
+              size="large"
+              edge="start"
+              sx={{
+                mr: 2,
+                color: 'white',
+                display: { sm: 'none' },
+                height: 'inherit',
+              }}
+              onClick={handleDrawerToggle}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {t(globalState.headerName)}
           </Typography>
