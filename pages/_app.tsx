@@ -8,18 +8,18 @@ import {
   CircularProgress,
   Components,
   createTheme,
-  keyframes,
   PaletteOptions,
   Theme,
   ThemeProvider,
   useMediaQuery,
 } from '@mui/material'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { GlobalProvider } from 'providers/global'
 import { useRouter } from 'next/router'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import Fab from '@components/Fab'
 import Background from '@components/Background'
+import { circularProgressClasses } from '@mui/material/CircularProgress'
 
 const componentsTheme: Components<Omit<Theme, 'components'>> = {
   MuiInputBase: {
@@ -95,9 +95,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Box
           sx={{
             height: '100vh',
-            ...((mode ? mode === 'dark' : prefersDarkMode) && {
-              color: '#fff',
-            }),
+            color: (theme) => (theme.palette.mode === 'dark' ? '#fff' : '#000'),
           }}
         >
           <Header toggleColorMode={toggleColorMode} />
@@ -106,31 +104,25 @@ export default function App({ Component, pageProps }: AppProps) {
               display: 'flex',
               flexDirection: 'column',
               overflowY: 'auto',
-              // ...((mode ? mode === 'dark' : prefersDarkMode) && {
-              //   backgroundColor: '#383838',
-              // }),
-              // overflow: 'hidden',
               position: 'relative',
               background: 'transparent',
               height: 'calc(100vh - 64px - 64px)',
             }}
           >
             <Box
+              id="background"
               sx={{
                 position: 'absolute',
-                // background: 'url("/images/bg.jpg") repeat-x center',
                 height: 'inherit',
                 width: '100%',
-                // width: 7480,
                 zIndex: -1,
                 opacity: (mode ? mode === 'dark' : prefersDarkMode) ? 1 : 0.5,
-                // animation: `${slide} 60s linear infinite;`,
               }}
             >
               <Background />
             </Box>
             <Box
-              id="loader"
+              id="preload-background"
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -138,11 +130,23 @@ export default function App({ Component, pageProps }: AppProps) {
                 height: 'inherit',
                 alignItems: 'center',
                 justifyContent: 'center',
-                zIndex: 10000,
                 position: 'absolute',
+                zIndex: -100,
+                background: 'white',
               }}
             >
-              <CircularProgress />
+              <CircularProgress
+                sx={{
+                  color: (theme) =>
+                    theme.palette.mode === 'dark' ? '#242424' : '#b5d6f1',
+                  animationDuration: '550ms',
+                  [`& .${circularProgressClasses.circle}`]: {
+                    strokeLinecap: 'round',
+                  },
+                }}
+                size={120}
+                thickness={4}
+              />
             </Box>
             <Box
               id="main"

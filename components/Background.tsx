@@ -7,29 +7,35 @@ export default function Background() {
     <head>
       <script src="/webvr/aframe-master.min.js"></script>
       <script>
+        var rerender = 0;
         AFRAME.registerComponent("log", {
           init: function () {
             this.el.addEventListener("loaded", () => {
-              console.log ("loaded");
-              var mainComponent = document.getElementById('main');
-              var disp = mainComponent.style.display;
-              mainComponent.style.display = 'none';
-              var trick = mainComponent.offsetHeight;
-              mainComponent.style.display = 'flex';
+              if (rerender === 1) {
+                var mainComponent = document.getElementById('main');
+                var disp = mainComponent.style.display;
+                mainComponent.style.display = 'none';
+                var trick = mainComponent.offsetHeight;
+                mainComponent.style.display = 'flex';
+  
+                var scene = document.getElementById('scene');
+                scene.style.display = 'block';
 
-              var loader = document.getElementById('loader');
-              loader.style.display = 'none';
+                var preloadBackground = document.getElementById('preload-background');
+                preloadBackground.style.display = 'none';
+              }
+              rerender++;
             });
           }
         });
       </script>
     </head>
     <body>
-      <a-scene log>
+      <a-scene log id="scene" style="z-index:-99;display:none;">
         <a-sky src="/images/bg.jpg" rotation="0 -130 0"></a-sky>
       </a-scene>
     </body>
-  </html>  
+  </html>
   `
 
   const [fkey, setFkey] = useState<string>('original-key')
