@@ -11,5 +11,9 @@
   "self-description": "我係個開發員",
   "email-me": "發郵件給我",
   "dark-mode": "夜間模式",
-  "light-mode": "日間模式"
+  "light-mode": "日間模式",
+  "loading-text": "請耐心等待，這可能需要幾分鐘",
+  "loading-image": "圖片加載中",
+  "loading-model": "3D模型加載中",
+  "loading-mesh": "網格加載中"
 }

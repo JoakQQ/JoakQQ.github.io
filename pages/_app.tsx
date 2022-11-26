@@ -8,9 +8,11 @@ import {
   CircularProgress,
   Components,
   createTheme,
+  keyframes,
   PaletteOptions,
   Theme,
   ThemeProvider,
+  Typography,
   useMediaQuery,
 } from '@mui/material'
 import { useMemo, useState } from 'react'
@@ -20,6 +22,37 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import Fab from '@components/Fab'
 import Background from '@components/Background'
 import { circularProgressClasses } from '@mui/material/CircularProgress'
+import { useTranslation } from 'react-i18next'
+
+const slideDown = keyframes`
+  from {
+    transform: translateY(-60px);
+  }
+  to {
+    transform: translateY(0);
+  }
+`
+
+const slideOut = keyframes`
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(60px);
+  }
+`
+
+const visible = keyframes`
+  to {
+    visibility: visible;
+  }
+`
+
+const invisible = keyframes`
+  to {
+    visibility: hidden;
+  }
+`
 
 const componentsTheme: Components<Omit<Theme, 'components'>> = {
   MuiInputBase: {
@@ -56,7 +89,9 @@ const paletteTheme: PaletteOptions = {
 export default function App({ Component, pageProps }: AppProps) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
   const [mode, setMode] = useState<'light' | 'dark'>()
+  const { t } = useTranslation()
   const router = useRouter()
+
   const toggleColorMode = () => {
     setMode((prevMode) => {
       switch (prevMode) {
@@ -132,13 +167,16 @@ export default function App({ Component, pageProps }: AppProps) {
                 justifyContent: 'center',
                 position: 'absolute',
                 zIndex: -100,
-                background: 'white',
+                gap: 8,
+                backgroundColor: (mode ? mode === 'dark' : prefersDarkMode)
+                  ? '#444444'
+                  : '#f4fffb',
               }}
             >
               <CircularProgress
                 sx={{
                   color: (theme) =>
-                    theme.palette.mode === 'dark' ? '#242424' : '#b5d6f1',
+                    theme.palette.mode === 'dark' ? '#fff' : '#000',
                   animationDuration: '550ms',
                   [`& .${circularProgressClasses.circle}`]: {
                     strokeLinecap: 'round',
@@ -147,6 +185,51 @@ export default function App({ Component, pageProps }: AppProps) {
                 size={120}
                 thickness={4}
               />
+              <Typography>{t('loading-text')}</Typography>
+              <Box
+                sx={{
+                  overflow: 'hidden',
+                  height: 30,
+                  position: 'relative',
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
+                <Typography
+                  sx={{
+                    visibility: 'hidden',
+                    position: 'absolute',
+                    animation: `${visible} 50ms forwards 0ms, ${slideDown} 3000ms linear 0ms, ${slideOut} 3000ms linear 3000ms, ${invisible} 50ms forwards 5950ms;`,
+                    animationIterationCount:
+                      'infinite, infinite, infinite, infinite;',
+                  }}
+                >
+                  {t('loading-image')}
+                </Typography>
+                <Typography
+                  sx={{
+                    visibility: 'hidden',
+                    position: 'absolute',
+                    animation: `${visible} 50ms forwards 2000ms, ${slideDown} 3000ms linear 2000ms, ${slideOut} 3000ms linear 5000ms, ${invisible} 50ms forwards 7950ms;`,
+                    animationIterationCount:
+                      'infinite, infinite, infinite, infinite;',
+                  }}
+                >
+                  {t('loading-model')}
+                </Typography>
+                <Typography
+                  sx={{
+                    visibility: 'hidden',
+                    position: 'absolute',
+                    animation: `${visible} 50ms forwards 4000ms, ${slideDown} 3000ms linear 4000ms, ${slideOut} 3000ms linear 7000ms, ${invisible} 50ms forwards 9950ms;`,
+                    animationIterationCount:
+                      'infinite, infinite, infinite, infinite;',
+                  }}
+                >
+                  {t('loading-mesh')}
+                </Typography>
+              </Box>
             </Box>
             <Box
               id="main"
