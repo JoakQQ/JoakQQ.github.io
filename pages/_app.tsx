@@ -5,6 +5,7 @@ import Header from '@components/Header'
 import Footer from '@components/Footer'
 import {
   Box,
+  CircularProgress,
   Components,
   createTheme,
   keyframes,
@@ -13,21 +14,12 @@ import {
   ThemeProvider,
   useMediaQuery,
 } from '@mui/material'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { GlobalProvider } from 'providers/global'
 import { useRouter } from 'next/router'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import Fab from '@components/Fab'
 import Background from '@components/Background'
-
-const slide = keyframes`
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-2560px);
-  }
-`
 
 const componentsTheme: Components<Omit<Theme, 'components'>> = {
   MuiInputBase: {
@@ -65,7 +57,6 @@ export default function App({ Component, pageProps }: AppProps) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
   const [mode, setMode] = useState<'light' | 'dark'>()
   const router = useRouter()
-
   const toggleColorMode = () => {
     setMode((prevMode) => {
       switch (prevMode) {
@@ -118,7 +109,7 @@ export default function App({ Component, pageProps }: AppProps) {
               // ...((mode ? mode === 'dark' : prefersDarkMode) && {
               //   backgroundColor: '#383838',
               // }),
-              overflow: 'hidden',
+              // overflow: 'hidden',
               position: 'relative',
               background: 'transparent',
               height: 'calc(100vh - 64px - 64px)',
@@ -138,7 +129,33 @@ export default function App({ Component, pageProps }: AppProps) {
             >
               <Background />
             </Box>
-            <Component {...pageProps} />
+            <Box
+              id="loader"
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+                height: 'inherit',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 10000,
+                position: 'absolute',
+              }}
+            >
+              <CircularProgress />
+            </Box>
+            <Box
+              id="main"
+              style={{
+                display: 'none',
+                flexDirection: 'column',
+                width: '100%',
+                height: 'inherit',
+                position: 'absolute',
+              }}
+            >
+              <Component {...pageProps} />
+            </Box>
             {router.pathname !== '/' && (
               <Fab
                 sx={{
