@@ -8,21 +8,26 @@ export default function Background() {
       <script src="/webvr/aframe-master.min.js"></script>
       <script>
         var rerender = 0;
+
+        function startRerender() {
+          var mainComponent = document.getElementById('main');
+          var disp = mainComponent.style.display;
+          mainComponent.style.display = 'none';
+          var trick = mainComponent.offsetHeight;
+          mainComponent.style.display = 'flex';
+
+          var scene = document.getElementById('scene');
+          scene.style.display = 'block';
+
+          var preloadBackground = document.getElementById('preload-background');
+          preloadBackground.style.display = 'none';
+        };
+
         AFRAME.registerComponent("log", {
           init: function () {
             this.el.addEventListener("loaded", () => {
               if (rerender === 1) {
-                var mainComponent = document.getElementById('main');
-                var disp = mainComponent.style.display;
-                mainComponent.style.display = 'none';
-                var trick = mainComponent.offsetHeight;
-                mainComponent.style.display = 'flex';
-  
-                var scene = document.getElementById('scene');
-                scene.style.display = 'block';
-
-                var preloadBackground = document.getElementById('preload-background');
-                preloadBackground.style.display = 'none';
+                setTimeout(startRerender, 5000);
               }
               rerender++;
             });
