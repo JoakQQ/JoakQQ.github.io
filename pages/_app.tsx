@@ -7,17 +7,27 @@ import {
   Box,
   Components,
   createTheme,
+  keyframes,
   PaletteOptions,
   Theme,
   ThemeProvider,
   useMediaQuery,
-  Fab,
-  IconButton,
+  // Fab,
 } from '@mui/material'
 import { useMemo, useState } from 'react'
 import { GlobalProvider } from 'providers/global'
 import { useRouter } from 'next/router'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import Fab from '@components/Fab'
+
+const slide = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-2560px);
+  }
+`
 
 const componentsTheme: Components<Omit<Theme, 'components'>> = {
   MuiInputBase: {
@@ -104,14 +114,27 @@ export default function App({ Component, pageProps }: AppProps) {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              height: 'calc(100vh - 64px - 64px)',
               overflowY: 'auto',
-              ...((mode ? mode === 'dark' : prefersDarkMode) && {
-                backgroundColor: '#383838',
-              }),
+              // ...((mode ? mode === 'dark' : prefersDarkMode) && {
+              //   backgroundColor: '#383838',
+              // }),
+              overflow: 'hidden',
               position: 'relative',
+              background: 'transparent',
+              height: 'calc(100vh - 64px - 64px)',
             }}
           >
+            <Box
+              sx={{
+                position: 'absolute',
+                background: 'url("/images/bg.jpg") repeat-x center',
+                height: 'inherit',
+                width: 7480,
+                zIndex: -1,
+                opacity: (mode ? mode === 'dark' : prefersDarkMode) ? 1 : 0.5,
+                animation: `${slide} 60s linear infinite;`,
+              }}
+            ></Box>
             <Component {...pageProps} />
             {router.pathname !== '/' && (
               <Fab
@@ -121,10 +144,9 @@ export default function App({ Component, pageProps }: AppProps) {
                   right: 16,
                   background: 'transparent',
                 }}
+                onClick={handleRouteToHome}
               >
-                <IconButton onClick={handleRouteToHome}>
-                  <ArrowBackIosNewIcon />
-                </IconButton>
+                <ArrowBackIosNewIcon />
               </Fab>
             )}
           </Box>

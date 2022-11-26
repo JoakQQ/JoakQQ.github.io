@@ -1,3 +1,4 @@
+import { Box, Typography } from '@mui/material'
 import { GlobalContext } from 'providers/global'
 import { Fragment, useContext, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -17,5 +18,5 @@ export default function AboutMe() {
     })
   }, [globalDispatch])
 
-  return <Fragment>{t('about-me')}</Fragment>
+  return <Typography>{t('about-me')}</Typography>
 }
