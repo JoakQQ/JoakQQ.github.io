@@ -24,18 +24,9 @@ import Background from '@components/Background'
 import { circularProgressClasses } from '@mui/material/CircularProgress'
 import { useTranslation } from 'react-i18next'
 
-const slideDown = keyframes`
+const slide = keyframes`
   from {
     transform: translateY(-60px);
-  }
-  to {
-    transform: translateY(0);
-  }
-`
-
-const slideOut = keyframes`
-  from {
-    transform: translateY(0);
   }
   to {
     transform: translateY(60px);
@@ -45,12 +36,6 @@ const slideOut = keyframes`
 const visible = keyframes`
   to {
     visibility: visible;
-  }
-`
-
-const invisible = keyframes`
-  to {
-    visibility: hidden;
   }
 `
 
@@ -200,9 +185,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   sx={{
                     visibility: 'hidden',
                     position: 'absolute',
-                    animation: `${visible} 50ms forwards 0ms, ${slideDown} 3000ms linear 0ms, ${slideOut} 3000ms linear 3000ms, ${invisible} 50ms forwards 5950ms;`,
-                    animationIterationCount:
-                      'infinite, infinite, infinite, infinite;',
+                    animation: `${visible} 0ms forwards, ${slide} 6000ms infinite 0ms;`,
                   }}
                 >
                   {t('loading-image')}
@@ -211,9 +194,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   sx={{
                     visibility: 'hidden',
                     position: 'absolute',
-                    animation: `${visible} 50ms forwards 2000ms, ${slideDown} 3000ms linear 2000ms, ${slideOut} 3000ms linear 5000ms, ${invisible} 50ms forwards 7950ms;`,
-                    animationIterationCount:
-                      'infinite, infinite, infinite, infinite;',
+                    animation: `${visible} 0ms 2050ms forwards, ${slide} 6000ms infinite 2000ms;`,
                   }}
                 >
                   {t('loading-model')}
@@ -222,9 +203,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   sx={{
                     visibility: 'hidden',
                     position: 'absolute',
-                    animation: `${visible} 50ms forwards 4000ms, ${slideDown} 3000ms linear 4000ms, ${slideOut} 3000ms linear 7000ms, ${invisible} 50ms forwards 9950ms;`,
-                    animationIterationCount:
-                      'infinite, infinite, infinite, infinite;',
+                    animation: `${visible} 0ms 4050ms forwards, ${slide} 6000ms infinite 4000ms;`,
                   }}
                 >
                   {t('loading-mesh')}
