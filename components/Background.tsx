@@ -23,9 +23,10 @@ export default function Background() {
 
         AFRAME.registerComponent("log", {
           init: function () {
-            this.el.addEventListener("loaded", () => {
+            this.el.addEventListener("materialtextureloaded", () => {
+              console.log('loaded scene', rerender)
               if (rerender === 1) {
-                setTimeout(startRerender, 5000);
+                setTimeout(startRerender, 1000);
               }
               rerender++;
             });
@@ -34,8 +35,8 @@ export default function Background() {
       </script>
     </head>
     <body>
-      <a-scene log id="scene" style="z-index:-99;visibility:hidden;">
-        <a-sky src="/images/bg.jpg" rotation="0 -130 0"></a-sky>
+      <a-scene id="scene" style="z-index:-99;visibility:hidden;">
+        <a-sky log src="/images/bg.jpg" rotation="0 -130 0"></a-sky>
       </a-scene>
     </body>
   </html>
