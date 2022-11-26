@@ -12,13 +12,13 @@ import {
   Theme,
   ThemeProvider,
   useMediaQuery,
-  // Fab,
 } from '@mui/material'
 import { useMemo, useState } from 'react'
 import { GlobalProvider } from 'providers/global'
 import { useRouter } from 'next/router'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import Fab from '@components/Fab'
+import Background from '@components/Background'
 
 const slide = keyframes`
   0% {
@@ -127,14 +127,17 @@ export default function App({ Component, pageProps }: AppProps) {
             <Box
               sx={{
                 position: 'absolute',
-                background: 'url("/images/bg.jpg") repeat-x center',
+                // background: 'url("/images/bg.jpg") repeat-x center',
                 height: 'inherit',
-                width: 7480,
+                width: '100%',
+                // width: 7480,
                 zIndex: -1,
                 opacity: (mode ? mode === 'dark' : prefersDarkMode) ? 1 : 0.5,
-                animation: `${slide} 60s linear infinite;`,
+                // animation: `${slide} 60s linear infinite;`,
               }}
-            ></Box>
+            >
+              <Background />
+            </Box>
             <Component {...pageProps} />
             {router.pathname !== '/' && (
               <Fab
