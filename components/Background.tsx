@@ -25,7 +25,7 @@ export default function Background() {
           init: function () {
             this.el.addEventListener("materialtextureloaded", () => {
               console.log('loaded scene', rerender)
-              if (rerender === 1) {
+              if (rerender === 3) {
                 setTimeout(startRerender, 1000);
               }
               rerender++;
