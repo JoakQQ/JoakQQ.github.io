@@ -12,7 +12,7 @@
   "email-me": "Email me",
   "dark-mode": "Dark Mode",
   "light-mode": "Light Mode",
-  "loading-text": "Please be patient, this could a few minutes",
+  "loading-text": "Please be patient, this could take a few minutes",
   "loading-image": "Loading images",
   "loading-model": "Loading 3D models",
   "loading-mesh": "Loading meshes"
