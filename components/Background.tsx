@@ -11,13 +11,11 @@ export default function Background() {
 
         function startRerender() {
           var mainComponent = document.getElementById('main');
-          var disp = mainComponent.style.display;
-          mainComponent.style.display = 'none';
           var trick = mainComponent.offsetHeight;
           mainComponent.style.display = 'flex';
 
           var scene = document.getElementById('scene');
-          scene.style.display = 'block';
+          scene.style.visibility = 'visible';
 
           var preloadBackground = document.getElementById('preload-background');
           preloadBackground.style.display = 'none';
@@ -36,7 +34,7 @@ export default function Background() {
       </script>
     </head>
     <body>
-      <a-scene log id="scene" style="z-index:-99;display:none;">
+      <a-scene log id="scene" style="z-index:-99;visibility:hidden;">
         <a-sky src="/images/bg.jpg" rotation="0 -130 0"></a-sky>
       </a-scene>
     </body>
