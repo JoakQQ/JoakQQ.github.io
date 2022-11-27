@@ -19,6 +19,16 @@ export default function Background() {
 
           var preloadBackground = document.getElementById('preload-background');
           preloadBackground.style.display = 'none';
+
+          var moveBackgroundButton = document.getElementById('movable-background');
+          if (moveBackgroundButton && moveBackgroundButton.style && moveBackgroundButton.style.display) {
+            moveBackgroundButton.style.display = 'flex';
+          }
+
+          var aCanvas = document.querySelector('.a-canvas');
+          if (aCanvas) {
+            aCanvas.className = 'new-canvas';
+          }
         };
 
         AFRAME.registerComponent("log", {

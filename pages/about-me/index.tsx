@@ -18,5 +18,14 @@ export default function AboutMe() {
     })
   }, [globalDispatch])
 
-  return <Typography>{t('about-me')}</Typography>
+  // TODO add elements :)
+  const temp = new Array(50).fill(1)
+
+  return (
+    <Box>
+      {temp.map((_, index) => {
+        return <Typography key={index}>{t('about-me')}</Typography>
+      })}
+    </Box>
+  )
 }

@@ -15,7 +15,7 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { GlobalProvider } from 'providers/global'
 import { useRouter } from 'next/router'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
@@ -23,6 +23,8 @@ import Fab from '@components/Fab'
 import Background from '@components/Background'
 import { circularProgressClasses } from '@mui/material/CircularProgress'
 import { useTranslation } from 'react-i18next'
+import FullscreenIcon from '@mui/icons-material/Fullscreen'
+import FullscreenExitIcon from '@mui/icons-material/FullscreenExit'
 
 const slide = keyframes`
   from {
@@ -74,6 +76,7 @@ const paletteTheme: PaletteOptions = {
 export default function App({ Component, pageProps }: AppProps) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
   const [mode, setMode] = useState<'light' | 'dark'>()
+  const [moveBackground, setMoveBackground] = useState<boolean>(false)
   const { t } = useTranslation()
   const router = useRouter()
 
@@ -109,6 +112,13 @@ export default function App({ Component, pageProps }: AppProps) {
     router.push('/')
   }
 
+  useEffect(() => {
+    const moveBackgroundButton = document.getElementById('movable-background')
+    if (moveBackgroundButton) {
+      moveBackgroundButton.style.display = 'none'
+    }
+  }, [])
+
   return (
     <GlobalProvider>
       <ThemeProvider theme={theme}>
@@ -135,7 +145,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 position: 'absolute',
                 height: 'inherit',
                 width: '100%',
-                zIndex: -1,
+                zIndex: moveBackground ? 1 : -1,
                 opacity: (mode ? mode === 'dark' : prefersDarkMode) ? 1 : 0.5,
               }}
             >
@@ -218,21 +228,45 @@ export default function App({ Component, pageProps }: AppProps) {
                 width: '100%',
                 height: 'inherit',
                 position: 'absolute',
+                ...(moveBackground && {
+                  zIndex: -1,
+                }),
               }}
             >
               <Component {...pageProps} />
             </Box>
-            {router.pathname !== '/' && (
+            {router.pathname !== '/' ? (
               <Fab
-                sx={{
-                  position: 'absolute',
-                  bottom: 16,
+                style={{
+                  display: 'flex',
+                  position: 'fixed',
+                  bottom: 80,
                   right: 16,
-                  background: 'transparent',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
                 onClick={handleRouteToHome}
               >
                 <ArrowBackIosNewIcon />
+              </Fab>
+            ) : (
+              <Fab
+                id="movable-background"
+                style={{
+                  display: 'flex',
+                  position: 'fixed',
+                  bottom: 80,
+                  right: 16,
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onClick={() => {
+                  setMoveBackground((prev) => !prev)
+                }}
+              >
+                {moveBackground ? <FullscreenExitIcon /> : <FullscreenIcon />}
               </Fab>
             )}
           </Box>

@@ -4,7 +4,7 @@
   "zh": "中文",
   "language": "語言",
   "home-page": "Joak的個人頁面",
-  "foot-page-declaimer": "此頁面由 Joak 使用 MUI 和 NextJS 創建",
+  "foot-page-declaimer": "😉 此頁面由 Joak 使用 MUI 和 NextJS 創建",
   "github-page": "Joak的Github",
   "greeting": "你好!",
   "my-name": "我係阿Joe",
@@ -16,5 +16,5 @@
   "loading-image": "圖片加載中",
   "loading-model": "3D模型加載中",
   "loading-mesh": "網格加載中",
-  "vr-disclaimer": "請使用手機進行VR體驗"
+  "vr-disclaimer": "請使用手機進行VR體驗 🙂"
 }

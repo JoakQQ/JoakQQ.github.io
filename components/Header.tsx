@@ -50,6 +50,7 @@ export default function Header(props: { toggleColorMode: () => void }) {
           maxHeight: 64,
           color: darkMode ? '#ffffff' : '#000000',
           backgroundColor: darkMode ? '#000000' : '#b5d6f1',
+          zIndex: 2,
         }}
       >
         <Toolbar

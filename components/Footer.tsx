@@ -23,6 +23,7 @@ export default function Footer() {
         gap: 2,
         p: 2,
         alignItems: 'center',
+        zIndex: 2,
       }}
     >
       <Box

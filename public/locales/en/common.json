@@ -4,7 +4,7 @@
   "zh": "Chinese",
   "language": "Language",
   "home-page": "Joak's Personal Page",
-  "foot-page-declaimer": "This page is created by Joak using MUI and NextJS",
+  "foot-page-declaimer": "😉 This page is created by Joak using MUI and NextJS",
   "github-page": "Joak's Github",
   "greeting": "Hello There!",
   "my-name": "I'm Joe",
@@ -16,5 +16,5 @@
   "loading-image": "Loading images",
   "loading-model": "Loading 3D models",
   "loading-mesh": "Loading meshes",
-  "vr-disclaimer": "Please use mobile for the VR experience"
+  "vr-disclaimer": "Please use mobile for the VR experience 🙂"
 }
