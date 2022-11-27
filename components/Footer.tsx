@@ -41,6 +41,7 @@ export default function Footer() {
         >
           <Typography>{t('email-me')}</Typography>
         </Link>
+        <Typography sx={{ fontSize: 9 }}>{t('vr-disclaimer')}</Typography>
       </Box>
       <Divider
         orientation="vertical"

@@ -15,5 +15,6 @@
   "loading-text": "Please be patient, this could take a few minutes",
   "loading-image": "Loading images",
   "loading-model": "Loading 3D models",
-  "loading-mesh": "Loading meshes"
+  "loading-mesh": "Loading meshes",
+  "vr-disclaimer": "Please use mobile for the VR experience"
 }

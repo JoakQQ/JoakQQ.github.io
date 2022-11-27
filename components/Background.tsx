@@ -24,7 +24,6 @@ export default function Background() {
         AFRAME.registerComponent("log", {
           init: function () {
             this.el.addEventListener("materialtextureloaded", () => {
-              console.log('loaded scene', rerender)
               if (rerender === 3) {
                 setTimeout(startRerender, 1000);
               }
