@@ -146,7 +146,10 @@ export default function App({ Component, pageProps }: AppProps) {
                 height: 'inherit',
                 width: '100%',
                 zIndex: moveBackground ? 1 : -1,
-                opacity: (mode ? mode === 'dark' : prefersDarkMode) ? 1 : 0.5,
+                opacity:
+                  (mode ? mode === 'dark' : prefersDarkMode) || moveBackground
+                    ? 1
+                    : 0.5,
               }}
             >
               <Background />
@@ -266,7 +269,17 @@ export default function App({ Component, pageProps }: AppProps) {
                   setMoveBackground((prev) => !prev)
                 }}
               >
-                {moveBackground ? <FullscreenExitIcon /> : <FullscreenIcon />}
+                {moveBackground ? (
+                  <FullscreenExitIcon
+                    {...(moveBackground && {
+                      sx: {
+                        color: '#fff',
+                      },
+                    })}
+                  />
+                ) : (
+                  <FullscreenIcon />
+                )}
               </Fab>
             )}
           </Box>
