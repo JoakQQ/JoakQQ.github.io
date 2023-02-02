@@ -14,6 +14,7 @@ import {
   ThemeProvider,
   Typography,
   useMediaQuery,
+  Tooltip,
 } from '@mui/material'
 import { useEffect, useMemo, useState } from 'react'
 import { GlobalProvider } from 'providers/global'
@@ -239,48 +240,55 @@ export default function App({ Component, pageProps }: AppProps) {
               <Component {...pageProps} />
             </Box>
             {router.pathname !== '/' ? (
-              <Fab
-                style={{
-                  display: 'flex',
-                  position: 'fixed',
-                  bottom: 80,
-                  right: 16,
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-                onClick={handleRouteToHome}
-              >
-                <ArrowBackIosNewIcon />
-              </Fab>
+              <Tooltip placement="top" title={t('home-page')}>
+                <Fab
+                  style={{
+                    display: 'flex',
+                    position: 'fixed',
+                    bottom: 80,
+                    right: 16,
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                  onClick={handleRouteToHome}
+                >
+                  <ArrowBackIosNewIcon />
+                </Fab>
+              </Tooltip>
             ) : (
-              <Fab
-                id="movable-background"
-                style={{
-                  display: 'flex',
-                  position: 'fixed',
-                  bottom: 80,
-                  right: 16,
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-                onClick={() => {
-                  setMoveBackground((prev) => !prev)
-                }}
+              <Tooltip
+                placement="top"
+                title={moveBackground ? t('zoom-out') : t('zoom-in')}
               >
-                {moveBackground ? (
-                  <FullscreenExitIcon
-                    {...(moveBackground && {
-                      sx: {
-                        color: '#fff',
-                      },
-                    })}
-                  />
-                ) : (
-                  <FullscreenIcon />
-                )}
-              </Fab>
+                <Fab
+                  id="movable-background"
+                  style={{
+                    display: 'flex',
+                    position: 'fixed',
+                    bottom: 80,
+                    right: 16,
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                  onClick={() => {
+                    setMoveBackground((prev) => !prev)
+                  }}
+                >
+                  {moveBackground ? (
+                    <FullscreenExitIcon
+                      {...(moveBackground && {
+                        sx: {
+                          color: '#fff',
+                        },
+                      })}
+                    />
+                  ) : (
+                    <FullscreenIcon />
+                  )}
+                </Fab>
+              </Tooltip>
             )}
           </Box>
           <Footer />

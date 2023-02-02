@@ -16,5 +16,11 @@
   "loading-image": "圖片加載中",
   "loading-model": "3D模型加載中",
   "loading-mesh": "網格加載中",
-  "vr-disclaimer": "請使用手機進行VR體驗 🙂"
+  "vr-disclaimer": "請使用手機進行VR體驗 🙂",
+  "zoom-in": "放大",
+  "zoom-out": "縮小",
+  "detailed-description-p1": "我是一位有洞察力和擅長編程的開發員。我對使用 Python、Go、JavaScript 等主流編程語言很有信心。我對編程充滿熱情，願意接受任何挑戰來增强我的技能。",
+  "detailed-description-p2": "我對人工智能和機器學習也很感興趣，尤其是自然語言處理領域，並且熟悉使用 PyTorch 和 TensorFlow 2 等主流機器學習框架。此外，我也有網絡開發方面的工作經驗，這有助於在網絡上配置人工智能模型。",
+  "more-languages": "還有更多！",
+  "comfortable-languages": "我使用的編程語言，"
 }
