@@ -1,5 +1,4 @@
-import styled from '@emotion/styled'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, styled } from '@mui/material'
 import { GlobalContext } from 'providers/global'
 import { useContext, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
