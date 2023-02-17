@@ -1,8 +1,11 @@
-import { Box, Typography, styled } from '@mui/material'
+import { Box, Typography, styled, Grid, Paper } from '@mui/material'
 import { GlobalContext } from 'providers/global'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import LanguageIcon from '@components/LanguageIcon'
+import projects from '@projects/index.json'
+import ProjectDetail from 'interfaces/project_details'
+import Image from 'next/image'
 
 const PageRoot = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
@@ -34,8 +37,11 @@ const LanguageIconGroupContainer = styled(Box)(({ theme }) => ({
 }))
 
 export default function AboutMe() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { globalDispatch } = useContext(GlobalContext)
+  const [projectDetailList, setProjectDetailList] = useState<
+    Array<ProjectDetail>
+  >([])
 
   useEffect(() => {
     globalDispatch({
@@ -46,10 +52,22 @@ export default function AboutMe() {
       type: 'changeTitle',
       title: 'about-me',
     })
-  }, [globalDispatch])
 
-  // TODO add elements :)
-  const temp = new Array(50).fill(1)
+    projects.forEach(async (project) => {
+      try {
+        const projectDetail = await import(`public/projects/${project.path}`)
+        setProjectDetailList((list) => {
+          const found =
+            list.findIndex(
+              (element) => element.title === projectDetail.title,
+            ) !== -1
+          return found ? list : [...list, projectDetail]
+        })
+      } catch (err) {
+        console.error(`failed to load ${project.name}`)
+      }
+    })
+  }, [globalDispatch, projects])
 
   return (
     <PageRoot>
@@ -58,7 +76,9 @@ export default function AboutMe() {
         <br />
         <Typography>{t('detailed-description-p2')}</Typography>
       </DetailedDescriptionContainer>
-      <Typography textAlign="center" fontSize="24px">{t('comfortable-languages')}</Typography>
+      <Typography textAlign="center" fontSize="24px">
+        {t('comfortable-languages')}
+      </Typography>
       <LanguageIconGroupContainer>
         <LanguageIcon code="TS" />
         <LanguageIcon code="JS" />
@@ -68,6 +88,25 @@ export default function AboutMe() {
         <LanguageIcon code="Lua" />
       </LanguageIconGroupContainer>
       <Typography textAlign="center">{t('more-languages')}</Typography>
+      <Box sx={{ my: 4 }}>
+        <Typography textAlign="center" variant="h4">
+          {t('recent-projects')}
+        </Typography>
+        <Grid container>
+          {projectDetailList.map((projectDetail, projectIndex) => (
+            <Grid key={`project-${projectIndex}`} item xs={6}>
+              <Paper
+                sx={{
+                  m: 1,
+                  p: 1,
+                }}
+              >
+                <Typography variant="h5">{projectDetail.title}</Typography>
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </PageRoot>
   )
 }

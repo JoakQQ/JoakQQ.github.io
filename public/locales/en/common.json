@@ -4,6 +4,7 @@
   "zh": "Chinese",
   "language": "Language",
   "home-page": "Joak's Personal Page",
+  "hobby-page": "🍵 Hobby Page",
   "foot-page-declaimer": "😉 This page is created by Joak using MUI and NextJS",
   "github-page": "Joak's Github",
   "greeting": "Hello There!",
@@ -22,5 +23,7 @@
   "detailed-description-p1": "I am an insightful software engineer who performs well at programming. I feel confident working with major programming languages such as Python, Go, JavaScript, etc. I am passionate about programming and willing to accept any challenges to enrich my skill set.",
   "detailed-description-p2": "I am also interested at AI and ML especially in NLP field, and feeling comfortable working with major ML frameworks such as PyTorch and TensorFlow 2. Moreover, I have working experience on web development, which helps deploying AI models on web.",
   "more-languages": "and more!",
-  "comfortable-languages": "The programming languages I comfortably working with,"
+  "comfortable-languages": "The programming languages I comfortably working with,",
+  "github-page-repository": "Github Page Repository",
+  "recent-projects": "Recent AI Related Projects"
 }

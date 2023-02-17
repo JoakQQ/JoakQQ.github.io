@@ -10,6 +10,7 @@ import {
   Drawer,
   useTheme,
   Divider,
+  Tooltip,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import { useTranslation } from 'react-i18next'
@@ -17,8 +18,12 @@ import { Fragment, useContext, useEffect, useState } from 'react'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
 import { GlobalContext } from 'providers/global'
+import GitHubIcon from '@mui/icons-material/GitHub'
 
-export default function Header(props: { toggleColorMode: () => void }) {
+export default function Header(props: {
+  toggleColorMode: () => void
+  openGithubRepository: () => void
+}) {
   const { t, i18n } = useTranslation()
   const [language, setLanguage] = useState<string>('en')
   const [mobileOpen, setMobileOpen] = useState<boolean>(false)
@@ -86,30 +91,56 @@ export default function Header(props: { toggleColorMode: () => void }) {
               justifyContent: 'flex-end',
             }}
           >
-            <IconButton
-              size="large"
-              edge="start"
-              sx={{
-                mr: 2,
-                color: 'white',
-                height: 'inherit',
-              }}
-              onClick={props.toggleColorMode}
+            <Tooltip title={t('github-page-repository')} placement="bottom">
+              <IconButton
+                size="large"
+                edge="start"
+                sx={{
+                  mr: 2,
+                  color: 'white',
+                  height: 'inherit',
+                }}
+                onClick={props.openGithubRepository}
+              >
+                <GitHubIcon
+                  sx={{
+                    color: (theme) =>
+                      theme.palette.mode === 'dark' ? '#ffffff' : '#000000',
+                  }}
+                />
+              </IconButton>
+            </Tooltip>
+            <Tooltip
+              title={
+                theme.palette.mode === 'dark' ? t('light-mode') : t('dark-mode')
+              }
+              placement="bottom"
             >
-              {theme.palette.mode === 'dark' ? (
-                <Brightness7Icon
-                  sx={{
-                    color: '#ffffff',
-                  }}
-                />
-              ) : (
-                <Brightness4Icon
-                  sx={{
-                    color: '#000000',
-                  }}
-                />
-              )}
-            </IconButton>
+              <IconButton
+                size="large"
+                edge="start"
+                sx={{
+                  mr: 2,
+                  color: 'white',
+                  height: 'inherit',
+                }}
+                onClick={props.toggleColorMode}
+              >
+                {theme.palette.mode === 'dark' ? (
+                  <Brightness7Icon
+                    sx={{
+                      color: '#ffffff',
+                    }}
+                  />
+                ) : (
+                  <Brightness4Icon
+                    sx={{
+                      color: '#000000',
+                    }}
+                  />
+                )}
+              </IconButton>
+            </Tooltip>
             <Select value={language} onChange={handleLanguageChange}>
               <MenuItem value={'en'}>{t('en')}</MenuItem>
               <MenuItem value={'zh'}>{t('zh')}</MenuItem>
@@ -153,6 +184,14 @@ export default function Header(props: { toggleColorMode: () => void }) {
             alignItems: 'center',
           }}
         >
+          <IconButton
+            sx={{
+              color: 'white',
+            }}
+            onClick={() => {}}
+          >
+            <GitHubIcon />
+          </IconButton>
           <IconButton
             sx={{
               color: 'white',

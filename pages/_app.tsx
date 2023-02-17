@@ -26,6 +26,7 @@ import { circularProgressClasses } from '@mui/material/CircularProgress'
 import { useTranslation } from 'react-i18next'
 import FullscreenIcon from '@mui/icons-material/Fullscreen'
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit'
+import Head from 'next/head'
 
 const slide = keyframes`
   from {
@@ -97,6 +98,10 @@ export default function App({ Component, pageProps }: AppProps) {
     })
   }
 
+  const openGithubRepository = () => {
+    window.open('https://github.com/JoakQQ/JoakQQ.github.io')
+  }
+
   const theme: Theme = useMemo(
     () =>
       createTheme({
@@ -123,13 +128,19 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <GlobalProvider>
       <ThemeProvider theme={theme}>
+        <Head>
+          <link rel="icon" href="/images/icons/galaxy.png" />
+        </Head>
         <Box
           sx={{
             height: '100vh',
             color: (theme) => (theme.palette.mode === 'dark' ? '#fff' : '#000'),
           }}
         >
-          <Header toggleColorMode={toggleColorMode} />
+          <Header
+            toggleColorMode={toggleColorMode}
+            openGithubRepository={openGithubRepository}
+          />
           <Box
             sx={{
               display: 'flex',

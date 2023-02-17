@@ -1,10 +1,9 @@
 import { Box, styled, Typography } from '@mui/material'
 import { GlobalContext } from 'providers/global'
-import { Fragment, useContext } from 'react'
+import { useContext } from 'react'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { keyframes } from '@mui/material'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Button from '@components/Button'
 
@@ -65,7 +64,7 @@ const SelfDescriptionBox = styled(Box)(({ theme }) => ({
   },
 }))
 
-const AboutMeButtonHolder = styled(Box)({
+const ButtonHolder = styled(Box)({
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
@@ -75,6 +74,10 @@ export default function HomePage() {
   const { t } = useTranslation()
   const { globalDispatch } = useContext(GlobalContext)
   const router = useRouter()
+
+  const openHobbyPage = () => {
+    window.open('https://matchapizza.github.io')
+  }
 
   useEffect(() => {
     globalDispatch({
@@ -119,7 +122,7 @@ export default function HomePage() {
           {t('self-description')}
         </SelfDescriptionTypography>
       </Box>
-      <AboutMeButtonHolder>
+      <ButtonHolder>
         <Button
           onClick={() => {
             router.push('/about-me')
@@ -131,7 +134,18 @@ export default function HomePage() {
         >
           {t('about-me')}
         </Button>
-      </AboutMeButtonHolder>
+      </ButtonHolder>
+      <ButtonHolder>
+      <Button
+          onClick={openHobbyPage}
+          sx={{
+            opacity: 0,
+            animation: `${fadeIn} 4000ms forwards 2000ms`,
+          }}
+        >
+          {t('hobby-page')}
+        </Button>
+      </ButtonHolder>
     </SelfDescriptionBox>
   )
 }

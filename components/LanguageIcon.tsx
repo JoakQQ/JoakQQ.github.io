@@ -8,19 +8,19 @@ const IconContainer = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     height: '64px',
     width: '64px',
-    border: 'red solid 2px',
+    border: '#d83fef solid 2px',
   },
   [theme.breakpoints.down('sm')]: {
     height: '32px',
     width: '32px',
-    border: 'red solid 1px',
+    border: '#d83fef solid 1px',
   },
 }))
 
 const IconText = styled(Typography)(({ theme }) => ({
   position: 'absolute',
   bottom: 0,
-  color: 'red',
+  color: '#d83fef',
   [theme.breakpoints.up('sm')]: {
     fontSize: 24,
     right: 8,
