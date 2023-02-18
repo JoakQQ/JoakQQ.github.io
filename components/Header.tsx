@@ -19,11 +19,9 @@ import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
 import { GlobalContext } from 'providers/global'
 import GitHubIcon from '@mui/icons-material/GitHub'
+import { OpenGithubPageRepository } from '@utils/github'
 
-export default function Header(props: {
-  toggleColorMode: () => void
-  openGithubRepository: () => void
-}) {
+export default function Header(props: { toggleColorMode: () => void }) {
   const { t, i18n } = useTranslation()
   const [language, setLanguage] = useState<string>('en')
   const [mobileOpen, setMobileOpen] = useState<boolean>(false)
@@ -100,7 +98,7 @@ export default function Header(props: {
                   color: 'white',
                   height: 'inherit',
                 }}
-                onClick={props.openGithubRepository}
+                onClick={OpenGithubPageRepository}
               >
                 <GitHubIcon
                   sx={{
@@ -188,14 +186,6 @@ export default function Header(props: {
             sx={{
               color: 'white',
             }}
-            onClick={() => {}}
-          >
-            <GitHubIcon />
-          </IconButton>
-          <IconButton
-            sx={{
-              color: 'white',
-            }}
             onClick={props.toggleColorMode}
           >
             {theme.palette.mode === 'dark' ? (
@@ -215,6 +205,22 @@ export default function Header(props: {
           <Typography sx={{ ml: 1 }}>
             {theme.palette.mode === 'dark' ? t('dark-mode') : t('light-mode')}
           </Typography>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <IconButton
+            sx={{
+              color: 'white',
+            }}
+            onClick={OpenGithubPageRepository}
+          >
+            <GitHubIcon />
+          </IconButton>
+          <Typography sx={{ ml: 1 }}>{t('github-page-repository')}</Typography>
         </Box>
       </Drawer>
     </Fragment>

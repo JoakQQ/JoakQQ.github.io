@@ -13,7 +13,6 @@ import {
   Theme,
   ThemeProvider,
   Typography,
-  useMediaQuery,
   Tooltip,
 } from '@mui/material'
 import { useEffect, useMemo, useState } from 'react'
@@ -27,6 +26,7 @@ import { useTranslation } from 'react-i18next'
 import FullscreenIcon from '@mui/icons-material/Fullscreen'
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit'
 import Head from 'next/head'
+import useDarkMode from '@hooks/useDarkMode'
 
 const slide = keyframes`
   from {
@@ -76,7 +76,7 @@ const paletteTheme: PaletteOptions = {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
+  const prefersDarkMode = useDarkMode()
   const [mode, setMode] = useState<'light' | 'dark'>()
   const [moveBackground, setMoveBackground] = useState<boolean>(false)
   const { t } = useTranslation()
@@ -96,10 +96,6 @@ export default function App({ Component, pageProps }: AppProps) {
         }
       }
     })
-  }
-
-  const openGithubRepository = () => {
-    window.open('https://github.com/JoakQQ/JoakQQ.github.io')
   }
 
   const theme: Theme = useMemo(
@@ -137,10 +133,7 @@ export default function App({ Component, pageProps }: AppProps) {
             color: (theme) => (theme.palette.mode === 'dark' ? '#fff' : '#000'),
           }}
         >
-          <Header
-            toggleColorMode={toggleColorMode}
-            openGithubRepository={openGithubRepository}
-          />
+          <Header toggleColorMode={toggleColorMode} />
           <Box
             sx={{
               display: 'flex',
@@ -257,7 +250,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     display: 'flex',
                     position: 'fixed',
                     bottom: 80,
-                    right: 16,
+                    right: 24,
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',

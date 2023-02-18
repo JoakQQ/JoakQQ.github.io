@@ -5,6 +5,7 @@
   "language": "Language",
   "home-page": "Joak's Personal Page",
   "hobby-page": "🍵 Hobby Page",
+  "hobby-page-coding": "🍵 Hobby Page [Coding]",
   "foot-page-declaimer": "😉 This page is created by Joak using MUI and NextJS",
   "github-page": "Joak's Github",
   "greeting": "Hello There!",
@@ -12,7 +13,7 @@
   "self-description": "I'm a developer",
   "email-me": "Email me",
   "dark-mode": "Dark Mode",
-  "light-mode": "Light Mode",
+  "1ight-mode": "Light Mode",
   "loading-text": "Please be patient, this could take a few minutes",
   "loading-image": "Loading images",
   "loading-model": "Loading 3D models",
@@ -25,5 +26,9 @@
   "more-languages": "and more!",
   "comfortable-languages": "The programming languages I comfortably working with,",
   "github-page-repository": "Github Page Repository",
-  "recent-projects": "Recent AI Related Projects"
+  "recent-projects": "Recent AI Related Projects",
+  "link": "Link",
+  "github-repository": "Github Repository",
+  "hobby-related-projects": "Check out my hobby related projects: ",
+  "check-out-github": "Check out out my github repository to learn more!"
 }

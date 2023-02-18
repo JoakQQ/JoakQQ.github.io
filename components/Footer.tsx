@@ -1,6 +1,7 @@
 import { Box, Divider, Typography, useTheme } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
+import { JoakGithubLink } from '@utils/github'
 
 export default function Footer() {
   const { t } = useTranslation()
@@ -62,7 +63,7 @@ export default function Footer() {
         }}
       >
         <Link
-          href="https://github.com/JoakQQ"
+          href={JoakGithubLink}
           style={{
             color: darkMode ? '#8f29b1' : '#ff0081',
           }}

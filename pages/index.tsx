@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { keyframes } from '@mui/material'
 import { useRouter } from 'next/router'
 import Button from '@components/Button'
+import { OpenHobbyPage } from '@utils/github'
 
 const translateDown = keyframes`
   from {
@@ -75,10 +76,6 @@ export default function HomePage() {
   const { globalDispatch } = useContext(GlobalContext)
   const router = useRouter()
 
-  const openHobbyPage = () => {
-    window.open('https://matchapizza.github.io')
-  }
-
   useEffect(() => {
     globalDispatch({
       type: 'changePageName',
@@ -136,8 +133,8 @@ export default function HomePage() {
         </Button>
       </ButtonHolder>
       <ButtonHolder>
-      <Button
-          onClick={openHobbyPage}
+        <Button
+          onClick={OpenHobbyPage}
           sx={{
             opacity: 0,
             animation: `${fadeIn} 4000ms forwards 2000ms`,

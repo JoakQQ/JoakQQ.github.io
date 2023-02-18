@@ -5,6 +5,7 @@
   "language": "語言",
   "home-page": "Joak的個人頁面",
   "hobby-page": "🍵 我的愛好",
+  "hobby-page-coding": "🍵 我的愛好 [編程]",
   "foot-page-declaimer": "😉 此頁面由 Joak 使用 MUI 和 NextJS 創建",
   "github-page": "Joak的Github",
   "greeting": "你好!",
@@ -25,5 +26,9 @@
   "more-languages": "還有更多！",
   "comfortable-languages": "我使用的編程語言，",
   "github-page-repository": "Github頁面文件夾",
-  "recent-projects": "最近關於AI的項目"
+  "recent-projects": "最近關於AI的項目",
+  "link": "鏈結",
+  "github-repository": "Github文件夾",
+  "hobby-related-projects": "查看愛好的相關項目： ",
+  "check-out-github": "查看我的github文件夾了解更多信息！"
 }
