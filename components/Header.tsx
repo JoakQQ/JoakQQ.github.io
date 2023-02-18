@@ -218,7 +218,12 @@ export default function Header(props: { toggleColorMode: () => void }) {
             }}
             onClick={OpenGithubPageRepository}
           >
-            <GitHubIcon />
+            <GitHubIcon
+              sx={{
+                color: (theme) =>
+                  theme.palette.mode === 'dark' ? '#ffffff' : '#000000',
+              }}
+            />
           </IconButton>
           <Typography sx={{ ml: 1 }}>{t('github-page-repository')}</Typography>
         </Box>
