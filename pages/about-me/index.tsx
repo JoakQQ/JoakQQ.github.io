@@ -6,13 +6,14 @@ import {
   Paper,
   IconButton,
   Tooltip,
+  Skeleton,
 } from '@mui/material'
 import { GlobalContext } from 'providers/global'
-import { useContext, useEffect, useState } from 'react'
+import { Fragment, useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import LanguageIcon from '@components/LanguageIcon'
 import projects from '@projects/index.json'
-import ProjectDetail from 'interfaces/project_details'
+import ProjectDetail, { InitProjectDetail } from 'interfaces/project_detail'
 import Image from 'next/image'
 import useTabletView from '@hooks/useTabletView'
 import GitHubIcon from '@mui/icons-material/GitHub'
@@ -26,6 +27,7 @@ import {
   OpenJoakGithub,
   OpenMatchaPizzaGithub,
 } from '@utils/github'
+import LazyImage from '@components/LazyImage'
 
 const PageRoot = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
@@ -69,6 +71,7 @@ const CardGroupTitle = styled(Typography)(({ theme }) => ({
 const ProjectPaper = styled(Paper)(({ theme }) => ({
   margin: theme.spacing(1),
   padding: theme.spacing(2),
+  borderRadius: theme.spacing(2),
 }))
 
 const ProjectPaperTitle = styled(Typography)(({ theme }) => ({
@@ -78,14 +81,6 @@ const ProjectPaperTitle = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     fontSize: 24,
   },
-}))
-
-const ProjectImageContainer = styled(Box)(({ theme }) => ({
-  width: '100%',
-  height: 400,
-  position: 'relative',
-  marginTop: 8,
-  marginBottom: 8,
 }))
 
 const ProjectButtonGroup = styled(Box)(({ theme }) => ({
@@ -109,6 +104,7 @@ const GithubPaper = styled(Paper)(({ theme }) => ({
   padding: 16,
   alignItems: 'center',
   margin: 8,
+  borderRadius: theme.spacing(2),
   ':hover': {
     cursor: 'pointer',
     transform: 'scale(1.02);',
@@ -125,23 +121,18 @@ const GithubUser = styled(Typography)(({ theme }) => ({
   marginTop: 8,
 }))
 
-const GithubAvatarContainer = styled(Box)(({ theme }) => ({
-  position: 'relative',
-  height: 200,
-  width: 200,
-  borderRadius: '100%',
-  backgroundColor: 'gray',
-  overflow: 'hidden',
-}))
-
 export default function AboutMe() {
   const { t, i18n } = useTranslation()
   const { globalDispatch } = useContext(GlobalContext)
   const [projectDetailList, setProjectDetailList] = useState<
     Array<ProjectDetail>
-  >([])
+  >(
+    projects.map((project) => ({
+      ...InitProjectDetail,
+      id: project.id,
+    })),
+  )
   const tabletView = useTabletView()
-  const router = useRouter()
 
   useEffect(() => {
     globalDispatch({
@@ -155,19 +146,21 @@ export default function AboutMe() {
 
     projects.forEach(async (project) => {
       try {
-        const projectDetail = await import(`public/projects/${project.path}`)
-        setProjectDetailList((list) => {
-          const found =
-            list.findIndex(
-              (element) => element.title === projectDetail.title,
-            ) !== -1
-          return found ? list : [...list, projectDetail]
-        })
+        const projectDetail: ProjectDetail = await import(
+          `public/projects/${project.path}`
+        )
+        setProjectDetailList((list) =>
+          list.map((element) =>
+            element.id === projectDetail.id && !element.loaded
+              ? { ...projectDetail, loaded: true }
+              : element,
+          ),
+        )
       } catch (err) {
-        console.error(`failed to load ${project.name}`)
+        console.error(`failed to load from ${project.path}`)
       }
     })
-  }, [globalDispatch, projects])
+  }, [globalDispatch])
 
   return (
     <PageRoot>
@@ -194,46 +187,64 @@ export default function AboutMe() {
           {projectDetailList.map((projectDetail, projectIndex) => (
             <Grid key={`project-${projectIndex}`} item xs={tabletView ? 12 : 6}>
               <ProjectPaper>
-                <ProjectPaperTitle>{projectDetail.title}</ProjectPaperTitle>
-                {projectDetail.imagePath && (
-                  <ProjectImageContainer>
-                    <Image
-                      src={`projects/images/${projectDetail.imagePath}`}
-                      alt={projectDetail.title}
-                      loading="lazy"
-                      fill
-                      placeholder="empty"
-                      style={{
-                        objectFit: 'cover',
-                      }}
+                {projectDetail.loaded ? (
+                  <Fragment>
+                    <ProjectPaperTitle>{projectDetail.title}</ProjectPaperTitle>
+                    {projectDetail.imagePath && (
+                      <LazyImage
+                        width="100%"
+                        height={400}
+                        src={`projects/images/${projectDetail.imagePath}`}
+                        alt={`${projectDetail.title}`}
+                        styles={{ my: 1 }}
+                      />
+                    )}
+                    <Typography>
+                      {i18n.language === 'en'
+                        ? projectDetail.enDescription
+                        : projectDetail.zhDescription}
+                    </Typography>
+                    <ProjectButtonGroup>
+                      {projectDetail.website && (
+                        <Tooltip title={t('link')}>
+                          <IconButton
+                            onClick={() => window.open(projectDetail.website)}
+                          >
+                            <LinkIcon />
+                          </IconButton>
+                        </Tooltip>
+                      )}
+                      {projectDetail.github && (
+                        <Tooltip title={t('github-repository')}>
+                          <IconButton
+                            onClick={() => window.open(projectDetail.github)}
+                          >
+                            <GitHubIcon />
+                          </IconButton>
+                        </Tooltip>
+                      )}
+                    </ProjectButtonGroup>
+                  </Fragment>
+                ) : (
+                  <Fragment>
+                    <Skeleton
+                      variant="text"
+                      width="100%"
+                      height={tabletView ? 36 : 48}
                     />
-                  </ProjectImageContainer>
+                    <Skeleton
+                      variant="rectangular"
+                      width="100%"
+                      height={400}
+                      sx={{ my: 1 }}
+                    />
+                    <Skeleton variant="text" width="100%" height={24} />
+                    <ProjectButtonGroup>
+                      <Skeleton variant="circular" width={40} height={40} />
+                      <Skeleton variant="circular" width={40} height={40} />
+                    </ProjectButtonGroup>
+                  </Fragment>
                 )}
-                <Typography>
-                  {i18n.language === 'en'
-                    ? projectDetail.enDescription
-                    : projectDetail.zhDescription}
-                </Typography>
-                <ProjectButtonGroup>
-                  {projectDetail.website && (
-                    <Tooltip title={t('link')}>
-                      <IconButton
-                        onClick={() => window.open(projectDetail.website)}
-                      >
-                        <LinkIcon />
-                      </IconButton>
-                    </Tooltip>
-                  )}
-                  {projectDetail.github && (
-                    <Tooltip title={t('github-repository')}>
-                      <IconButton
-                        onClick={() => window.open(projectDetail.github)}
-                      >
-                        <GitHubIcon />
-                      </IconButton>
-                    </Tooltip>
-                  )}
-                </ProjectButtonGroup>
               </ProjectPaper>
             </Grid>
           ))}
@@ -248,28 +259,25 @@ export default function AboutMe() {
         <Grid container>
           <Grid item xs={tabletView ? 12 : 6}>
             <GithubPaper onClick={OpenJoakGithub}>
-              <GithubAvatarContainer>
-                <Image
-                  src={JoakGithubIconLink}
-                  alt="joak-icon"
-                  loading="lazy"
-                  fill
-                />
-              </GithubAvatarContainer>
-
+              <LazyImage
+                width={200}
+                height={200}
+                src={JoakGithubIconLink}
+                alt="joak-icon"
+                styles={{ borderRadius: '100%' }}
+              />
               <GithubUser>Joak</GithubUser>
             </GithubPaper>
           </Grid>
           <Grid item xs={tabletView ? 12 : 6}>
             <GithubPaper onClick={OpenMatchaPizzaGithub}>
-              <GithubAvatarContainer>
-                <Image
-                  src={MatchapizzaGithubIconLink}
-                  alt="matchapizza-icon"
-                  loading="lazy"
-                  fill
-                />
-              </GithubAvatarContainer>
+              <LazyImage
+                width={200}
+                height={200}
+                src={MatchapizzaGithubIconLink}
+                alt="matchapizza-icon"
+                styles={{ borderRadius: '100%' }}
+              />
               <GithubUser>MatchaPizza</GithubUser>
             </GithubPaper>
           </Grid>

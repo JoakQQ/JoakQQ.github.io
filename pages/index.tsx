@@ -99,6 +99,8 @@ export default function HomePage() {
           variant="h1"
           sx={{
             animation: `${translateDown} 2000ms ease-in-out`,
+            WebkitAnimation: `${translateDown} 2000ms ease-in-out`,
+            MozAnimation: `${translateDown} 2000ms ease-in-out`,
           }}
         >
           {t('my-name')}
@@ -114,6 +116,8 @@ export default function HomePage() {
           sx={{
             visibility: 'hidden',
             animation: `${visible} 2500ms forwards, ${translateDown} 2000ms ease-in-out 2000ms`,
+            WebkitAnimation: `${visible} 2500ms forwards, ${translateDown} 2000ms ease-in-out 2000ms`,
+            MozAnimation: `${visible} 2500ms forwards, ${translateDown} 2000ms ease-in-out 2000ms`,
           }}
         >
           {t('self-description')}
@@ -127,6 +131,8 @@ export default function HomePage() {
           sx={{
             opacity: 0,
             animation: `${fadeIn} 2000ms forwards 2000ms`,
+            WebkitAnimation: `${fadeIn} 2000ms forwards 2000ms`,
+            MozAnimation: `${fadeIn} 2000ms forwards 2000ms`,
           }}
         >
           {t('about-me')}
@@ -138,6 +144,8 @@ export default function HomePage() {
           sx={{
             opacity: 0,
             animation: `${fadeIn} 4000ms forwards 2000ms`,
+            WebkitAnimation: `${fadeIn} 4000ms forwards 2000ms`,
+            MozAnimation: `${fadeIn} 4000ms forwards 2000ms`,
           }}
         >
           {t('hobby-page')}

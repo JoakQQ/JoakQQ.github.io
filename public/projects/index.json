@@ -1,14 +1,14 @@
 [
   {
-    "name": "herory",
+    "id": 1,
     "path": "herory.json"
   },
   {
-    "name": "fyp",
+    "id":2,
     "path": "fyp.json"
   },
   {
-    "name": "car_skeleton_detection",
+    "id": 3,
     "path": "car_skeleton_detection.json"
   }
 ]
