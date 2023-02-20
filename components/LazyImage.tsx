@@ -1,5 +1,4 @@
-import { Box, css, keyframes, styled, SxProps, Theme } from '@mui/material'
-import { CSSProperties } from '@mui/styled-engine'
+import { Box, keyframes, SxProps, Theme } from '@mui/material'
 import Image from 'next/image'
 
 const Gradient = keyframes`

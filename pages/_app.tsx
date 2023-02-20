@@ -8,12 +8,12 @@ import {
   CircularProgress,
   Components,
   createTheme,
-  keyframes,
   PaletteOptions,
   Theme,
   ThemeProvider,
   Typography,
   Tooltip,
+  keyframes,
 } from '@mui/material'
 import { useEffect, useMemo, useState } from 'react'
 import { GlobalProvider } from 'providers/global'
@@ -204,6 +204,8 @@ export default function App({ Component, pageProps }: AppProps) {
                     visibility: 'hidden',
                     position: 'absolute',
                     animation: `${visible} 0ms forwards, ${slide} 6000ms infinite 0ms;`,
+                    WebkitAnimation: `${visible} 0ms forwards, ${slide} 6000ms infinite 0ms;`,
+                    MozAnimation: `${visible} 0ms forwards, ${slide} 6000ms infinite 0ms;`,
                   }}
                 >
                   {t('loading-image')}
@@ -213,6 +215,8 @@ export default function App({ Component, pageProps }: AppProps) {
                     visibility: 'hidden',
                     position: 'absolute',
                     animation: `${visible} 0ms 2050ms forwards, ${slide} 6000ms infinite 2000ms;`,
+                    WebkitAnimation: `${visible} 0ms 2050ms forwards, ${slide} 6000ms infinite 2000ms;`,
+                    MozAnimation: `${visible} 0ms 2050ms forwards, ${slide} 6000ms infinite 2000ms;`,
                   }}
                 >
                   {t('loading-model')}
@@ -222,6 +226,8 @@ export default function App({ Component, pageProps }: AppProps) {
                     visibility: 'hidden',
                     position: 'absolute',
                     animation: `${visible} 0ms 4050ms forwards, ${slide} 6000ms infinite 4000ms;`,
+                    WebkitAnimation: `${visible} 0ms 4050ms forwards, ${slide} 6000ms infinite 4000ms;`,
+                    MozAnimation: `${visible} 0ms 4050ms forwards, ${slide} 6000ms infinite 4000ms;`,
                   }}
                 >
                   {t('loading-mesh')}
@@ -238,6 +244,11 @@ export default function App({ Component, pageProps }: AppProps) {
                 position: 'absolute',
                 ...(moveBackground && {
                   zIndex: -1,
+                  WebkitTouchCallout: 'none',
+                  WebkitUserSelect: 'none',
+                  MozUserSelect: 'none',
+                  msUserSelect: 'none',
+                  userSelect: 'none',
                 }),
               }}
             >
