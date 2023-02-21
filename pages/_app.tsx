@@ -129,6 +129,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </Head>
         <Box
           sx={{
+            height:'100vh',
             height: '100svh',
             color: (theme) => (theme.palette.mode === 'dark' ? '#fff' : '#000'),
           }}
@@ -141,6 +142,7 @@ export default function App({ Component, pageProps }: AppProps) {
               overflowY: 'auto',
               position: 'relative',
               background: 'transparent',
+              height: 'calc(100vh - 64px - 64px)',
               height: 'calc(100svh - 64px - 64px)',
             }}
           >

@@ -16,7 +16,7 @@ a {
 }
 
 .new-canvas {
-  height: calc(100svh - 128px) !important;
+  height: calc(100vh - 128px) !important;
   left: 0 !important;
   right: 0 !important;
   top: 64px !important;
