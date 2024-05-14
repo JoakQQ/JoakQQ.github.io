@@ -1,0 +1,21 @@
+{
+  "name": "my-webpack-project",
+  "version": "1.0.0",
+  "description": "My webpack project",
+  "scripts": {
+    "build": "webpack --mode=development",
+    "build:prod": "webpack --mode=production",
+    "watch": "webpack --watch"
+  },
+  "author": "Joe Leung",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^5.91.0"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.1",
+    "mini-css-extract-plugin": "^2.9.0",
+    "terser-webpack-plugin": "^5.3.10",
+    "webpack-cli": "^5.1.4"
+  }
+}
