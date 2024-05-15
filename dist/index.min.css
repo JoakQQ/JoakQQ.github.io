@@ -1,0 +1,49 @@
+.greeting-container {
+  margin: 50px 0;
+  text-align: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+.greeting-container h1 {
+  margin: 8px 0;
+}
+
+.greeting-container .hello {
+  font-size: 3.75rem;
+  line-height: 1.2;
+}
+
+.greeting-container .introduction {
+  font-size: 6rem;
+  line-height: 1.167;
+}
+
+.greeting-container .post {
+  font-size: 6rem;
+  line-height: 1.167;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 512px) {
+  .greeting-container .hello {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .greeting-container .introduction {
+    font-size: 3rem;
+    line-height: 1.167;
+  }
+
+  .greeting-container .post {
+    font-size: 3rem;
+    line-height: 1.167;
+  }
+}
+

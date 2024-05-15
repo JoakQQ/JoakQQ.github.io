@@ -1,0 +1,76 @@
+.about-me-container {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  text-align: center;
+  margin: 50px;
+}
+
+.about-me-container p {
+  font-size: 1.2rem;
+}
+
+.language-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.language-container img {
+  height: 40px;
+}
+
+.github-repo-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.card {
+  border-radius: 16px;
+  width: 400px;
+  background-color: rgb(18, 18, 18);
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.card:has(> .overlay:hover) {
+  scale: 1.05;
+  transition: scale 100ms ease-in-out;
+  opacity: 0.8;
+}
+
+img.avatar {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 100%;
+  margin: 16px;
+}
+
+@media screen and (max-width: 864px) {
+  .github-repo-container {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  .about-me-container {
+    margin: 30px 16px;
+  }
+
+  .about-me-container p {
+    font-size: 1rem;
+  }
+}
+

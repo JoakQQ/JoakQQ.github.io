@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title data-translate>title.name</title>
+    <link rel="stylesheet" href="dist/common.min.css" />
+    <link rel="stylesheet" href="dist/about-me.min.css" />
+    <script defer src="dist/common.min.js"></script>
+  </head>
+  <body>
+    <nav id="navbar">
+      <a href="index.html" class="nav-button" data-translate>nav.homepage</a>
+      <a href="about-me.html" class="active nav-button" data-translate>nav.about-me</a>
+      <a href="https://github.com/JoakQQ/JoakQQ.github.io"><img alt="github-logo" title="Github" class="github-logo" src="dist/static/image/github.svg"></img></a>
+      <select id="lang-select" onchange="onlanguagechange(this);">
+        <option data-translate value="en">en</option>
+        <option data-translate value="zh">zh</option>
+      </select>
+    </nav>
+		<div class="about-me-container">
+			<p data-translate>about-me.p1</p>
+			<p data-translate>about-me.p2</p>
+		</div>
+		<div class="about-me-container">
+			<p data-translate>language.comfortable</p>
+			<div class="language-container">
+				<img alt="java-icon" title="Java" src="dist/static/image/java.png"></img>
+				<img alt="go-icon" title="Golang" src="dist/static/image/go.svg"></img>
+				<img alt="rust-icon" title="Rust" src="dist/static/image/rust.svg"></img>
+				<img alt="js-icon" title="JavaScript" src="dist/static/image/js.png"></img>
+				<img alt="ts-icon" title="TypeScript" src="dist/static/image/ts.png"></img>
+				<img alt="py-icon" title="Python" src="dist/static/image/py.png"></img>
+			</div>
+			<p data-translate>language.like</p>
+			<div class="language-container">
+				<img alt="go-icon" title="Golang" src="dist/static/image/go.svg"></img>
+				<img alt="rust-icon" title="Rust" src="dist/static/image/rust.svg"></img>
+			</div>
+		</div>
+		<div class="about-me-container">
+			<p data-translate>github.checkout</p>
+			<div class="github-repo-container">
+				<div class="card">
+					<img class="avatar" alt="joakqq-icon" src="https://avatars.githubusercontent.com/u/47177060"></img>
+					<p>Joak</p>
+					<a class="overlay" title="Joak" href="https://github.com/JoakQQ"></a>
+				</div>
+				<div class="card">
+					<img class="avatar" alt="matchapizza-icon" src="https://avatars.githubusercontent.com/u/124992812"></img>
+					<p>MatchaPizza</p>
+					<a class="overlay" title="MatchaPizza" href="https://github.com/MatchaPizza"></a>
+				</div>
+			</div>
+		</div>
+  </body>
+</html>

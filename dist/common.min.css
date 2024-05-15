@@ -1,4 +1,75 @@
 body {
-	background-color: black;
+  margin: 0;
+  background-color: rgb(36, 36, 36);
+  color: white;
+}
+
+#navbar {
+  background-color: black;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: sticky;
+  top: 0;
+	z-index: 1000;
+}
+
+#navbar > *:first-child {
+  margin-left: 8px;
+}
+
+#navbar > *:last-child {
+  margin-right: 8px;
+}
+
+#navbar .github-logo {
+  height: 30px;
+  width: 30px;
+  filter: invert(1);
+}
+
+#navbar a:has(> .github-logo) {
+  margin-left: auto;
+}
+
+.nav-button {
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 8px;
+  color: white;
+}
+
+.nav-button.active {
+  background-color: rgba(234, 249, 20, 0.707);
+}
+
+.nav-button:hover {
+  background-color: rgb(29, 246, 210);
+  transition: background-color 1s ease-in-out;
+}
+
+#lang-select {
+  height: 40px;
+  width: 80px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+#lang-select:focus {
+  border: 2px solid rgb(29, 246, 210);
+}
+
+a.button {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+	text-decoration: none;
+	border-radius: 8px;
+	padding: 16px;
+  color: white;
+}
+
+a.button:hover {
+  background-color: rgba(156, 245, 230, 0.26);
+  transition: background-color 1s ease-in-out;
 }
 
