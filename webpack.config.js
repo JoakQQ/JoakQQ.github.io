@@ -1,6 +1,8 @@
+const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
@@ -10,7 +12,16 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'static/image/*' },
+            ],
+        }),
         new MiniCssExtractPlugin({ filename: '[name].min.css' }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+        }),
     ],
     optimization: {
         minimize: true,

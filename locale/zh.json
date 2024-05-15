@@ -1,0 +1,16 @@
+{
+	"title.name": "Joak的Github頁面",
+	"en": "英文",
+	"zh": "中文",
+	"nav.homepage": "首頁",
+	"nav.about-me": "關於我",
+	"greeting.hello": "你好!",
+	"greeting.introduction": "我係阿Joe",
+	"greeting.post": "我係個開發員",
+	"hobby-page": "🍵 我的愛好",
+	"about-me.p1": "我是一位有洞察力和擅長編程的開發員，我對使用各種主要程式語言充滿信心。我還擁有部署AWS和本機應用程式的經驗，以及使用許多其他技術（如RabbitMQ、gRPC、ElasticSearch、OAuth2等）的經驗。我對編程充滿熱情，願意接受任何挑戰來增强我的技能。",
+	"about-me.p2": "我對人工智能和機器學習也很感興趣，尤其是自然語言處理領域，並且熟悉使用 PyTorch 和 TensorFlow 2 等主流機器學習框架。此外，我也有網絡開發方面的工作經驗，這有助於在網絡上配置人工智能模型。",
+	"language.comfortable": "我可以舒適使用的程式語言",
+	"language.like": "我喜歡的程式語言",
+	"github.checkout": "查看我的github文件夾了解更多信息！"
+}

@@ -10,9 +10,11 @@
   "author": "Joe Leung",
   "license": "ISC",
   "dependencies": {
+    "jquery": "^3.7.1",
     "webpack": "^5.91.0"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.1",
     "mini-css-extract-plugin": "^2.9.0",
     "terser-webpack-plugin": "^5.3.10",

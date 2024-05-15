@@ -1,0 +1,16 @@
+{
+	"title.name": "Joak's Github Page",
+	"en": "English",
+	"zh": "Chinese",
+	"nav.homepage": "Homepage",
+	"nav.about-me": "About Me",
+	"greeting.hello": "Hello There!",
+	"greeting.introduction": "I'm Joe",
+	"greeting.post": "I'm a Developer",
+	"hobby-page": "🍵 Hobby Page",
+	"about-me.p1": "I am an insightful software engineer who performs well at programming. I feel confident working with various major programming languages. I also have experience deploying AWS and on-premise applications, and working with a lot of other technologies like RabbitMQ, gRPC, ElasticSearch, OAuth2, etc. I am passionate about developing and willing to accept any challenges to enrich my skill set.",
+	"about-me.p2": "I am also interested at AI and ML especially in NLP field, and feeling comfortable working with major ML frameworks such as PyTorch and TensorFlow 2. Moreover, I have working experience on web development, which helps deploying AI models on web.",
+	"language.comfortable": "The programming languages I comfortably working with",
+	"language.like": "The programming languages I like",
+	"github.checkout": "Check out out my github repository to learn more!"
+}
