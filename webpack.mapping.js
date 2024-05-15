@@ -1,9 +1,9 @@
-const JS_DIR = './src/js'
-// const CSS_DIR = './src/css'
+const JS_DIR = './static/js'
+const CSS_DIR = './static/css'
 
 module.exports = {
 	common: [
-		`${JS_DIR}/common.js`
-		// `${CSS_DIR}/common.css`
-	]
+		`${JS_DIR}/common.js`,
+		`${CSS_DIR}/common.css`,
+	],
 };
