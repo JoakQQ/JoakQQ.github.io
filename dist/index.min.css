@@ -49,14 +49,14 @@
   -webkit-text-stroke: 0 rgb(217, 243, 23);
   overflow: hidden;
   filter: drop-shadow(0 0 5px rgba(91, 224, 54, 0.408)) drop-shadow(0 0 10px rgba(223, 231, 20, 0.704));
-  animation: type-name 3s infinite;
+  animation: type-name 15s infinite;
 }
 
 @keyframes type-name {
   0% {
     width: 0;
   }
-  50% {
+  10% {
     width: 100%;
   }
 }
