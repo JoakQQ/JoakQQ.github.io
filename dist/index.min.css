@@ -116,7 +116,7 @@
     --padding: 1rem;
     --fontSizeFirst: 2rem;
     --fontSizeSecond: 4rem;
-    --greetingMargin: 23vh;
+    --greetingMargin: 20vh;
     --spacing: 1rem;
   }
 }
@@ -125,7 +125,6 @@
   :root {
     --fontSizeFirst: 1.5rem;
     --fontSizeSecond: 3rem;
-    --greetingMargin: 25vh;
     --spacing: .7rem;
   }
 }
