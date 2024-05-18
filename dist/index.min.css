@@ -34,30 +34,123 @@
   position: relative;
   margin-left: var(--spacing);
   color: transparent;
-  -webkit-text-stroke: .5px rgb(217, 243, 23);
+  text-align: left;
 }
 
 .greeting-container .my-name::before {
+  content: attr(data-alt-name);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(
+    180deg,
+    rgb(235, 41, 105) 0%,
+    rgba(242, 242, 44, 0.816) 100%
+  );
+  -webkit-background-clip: text;
+  overflow: hidden;
+  filter: drop-shadow(0 0 5px rgba(240, 105, 27, 0.408))
+    drop-shadow(0 0 10px rgba(223, 231, 20, 0.704));
+  animation: type-name-1 10s infinite;
+}
+
+.greeting-container .my-name::after {
   content: attr(data-name);
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
-  color: rgb(217, 243, 23);
-  border-right: .3rem solid rgb(217, 243, 23);
-  -webkit-text-stroke: 0 rgb(217, 243, 23);
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(
+    180deg,
+    rgba(143, 86, 223, 0.878) 0%,
+    rgba(234, 26, 196, 0.76) 100%
+  );
+  -webkit-background-clip: text;
   overflow: hidden;
-  filter: drop-shadow(0 0 5px rgba(91, 224, 54, 0.408)) drop-shadow(0 0 10px rgba(223, 231, 20, 0.704));
-  animation: type-name 15s infinite;
+  filter: drop-shadow(0 0 5px rgba(201, 53, 227, 0.408))
+    drop-shadow(0 0 10px rgba(233, 94, 30, 0.704));
+  animation: type-name-2 10s infinite;
 }
 
-@keyframes type-name {
+@keyframes type-name-1 {
   0% {
-    width: 0;
+    border-right: 0.3rem solid #fff;
+    width: 0%;
   }
-  10% {
+  5% {
+    width: 25%;
+  }
+  9% {
+    width: 50%;
+  }
+  13% {
+    width: 75%;
+  }
+  16% {
     width: 100%;
+  }
+  40% {
+    width: 100%;
+  }
+  42% {
+    width: 75%;
+  }
+  45% {
+    width: 50%;
+  }
+  47% {
+    border-right: 0.3rem solid #fff;
+    width: 25%;
+  }
+  49% {
+    border-right: 0 solid #fff;
+    width: 0%;
+  }
+  100% {
+    border-right: 0 solid #fff;
+    width: 0%;
+  }
+}
+
+@keyframes type-name-2 {
+  0% {
+    border-right: 0 solid #fff;
+    width: 0%;
+  }
+  52% {
+    border-right: 0 solid #fff;
+    width: 0%;
+  }
+  56% {
+    border-right: 0.3rem solid #fff;
+    width: 25%;
+  }
+  59% {
+    width: 50%;
+  }
+  62% {
+    width: 75%;
+  }
+  87% {
+    width: 75%;
+  }
+  90% {
+    width: 50%;
+  }
+  92% {
+    border-right: 0.3rem solid #fff;
+    width: 25%;
+  }
+  95% {
+    width: 0%;
+    border-right: 0 solid #fff;
+  }
+  100% {
+    width: 0%;
+    border-right: 0 solid #fff;
   }
 }
 
@@ -73,9 +166,15 @@
   font-weight: 600;
   font-size: var(--fontSizeSecond);
   -webkit-text-fill-color: transparent;
-  background: linear-gradient(90deg, rgb(181, 228, 25) 0%, rgb(101, 238, 123) 35%, rgb(21, 207, 244) 100%);
+  background: linear-gradient(
+    90deg,
+    rgb(181, 228, 25) 0%,
+    rgb(101, 238, 123) 35%,
+    rgb(21, 207, 244) 100%
+  );
   -webkit-background-clip: text;
-  filter: drop-shadow(0 0 5px rgba(182, 246, 164, 0.604)) drop-shadow(0 0 10px rgba(234, 242, 4, 0.448));
+  filter: drop-shadow(0 0 5px rgba(182, 246, 164, 0.604))
+    drop-shadow(0 0 10px rgba(234, 242, 4, 0.448));
 }
 
 .silder {
@@ -125,14 +224,14 @@
   :root {
     --fontSizeFirst: 1.5rem;
     --fontSizeSecond: 3rem;
-    --spacing: .7rem;
+    --spacing: 0.7rem;
   }
 }
 
 @media screen and (max-width: 400px) {
   :root {
     --fontSizeSecond: 2rem;
-    --spacing: .5rem;
+    --spacing: 0.5rem;
   }
 }
 
